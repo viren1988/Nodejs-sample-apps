@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+metadata:
+  name: node-app
+  labels:
+    app: node
+kind: Deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+      - name: node-container
+        image: vrdal.azurecr.io/nodeimage:latest
+        ports:
+        - containerPort: 3000
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: node-ser
+spec:
+  type: LoadBalancer
+  selector:
+    app: node
+  ports: 
+  - protocol: TCP
+    port: 90
+    targetPort: 3000

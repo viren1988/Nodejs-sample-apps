@@ -1,0 +1,13 @@
+replicaCount: 3
+image:
+  tag: latest
+ingress:
+  enabled: false
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+

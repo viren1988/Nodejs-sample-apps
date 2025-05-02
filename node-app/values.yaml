@@ -1,0 +1,10 @@
+replicaCount: 1
+image:
+  repository: vrdal.azurecr.io/nodeimage
+  tag: latest
+containerPort: 3000
+
+service:
+  type: LoadBalancer
+  port: 90
+
